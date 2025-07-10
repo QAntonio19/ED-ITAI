@@ -1,12 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import { BarChart, Github, Sparkles, Rocket, Zap, TestTubes, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeIn } from "./fade-in";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { useToast } from "@/hooks/use-toast";
+import type { FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export function LandingPage() {
+  const { toast } = useToast();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "¡Mensaje enviado!",
+      description: "Pronto nos comunicaremos contigo.",
+    });
+    e.currentTarget.reset();
+  };
+
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between z-10">
@@ -14,6 +30,7 @@ export function LandingPage() {
           <Sparkles className="h-8 w-8 text-accent" />
           <span className="text-foreground">BrandBoost AI</span>
         </Link>
+        <ThemeToggle />
       </header>
 
       <main className="flex-1">
@@ -57,7 +74,7 @@ export function LandingPage() {
                     <CardDescription>Respuesta en 24 horas</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <Input id="name" placeholder="Tu Nombre" />
                       <Input id="email" type="email" placeholder="Tu Correo Electrónico" />
                       <Input id="whatsapp" placeholder="WhatsApp" />
