@@ -3,7 +3,7 @@ import './global.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'BrandBoost AI',
+  title: 'Expertiz Digital',
   description: "Unleash Your Brand's Potential with AI.",
 };
 
