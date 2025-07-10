@@ -1,19 +1,40 @@
+"use client";
+
 import Link from "next/link";
-import { BarChart, Github, Sparkles, Rocket, Zap, TestTubes, TrendingUp } from "lucide-react";
+import { BarChart, Github, Rocket, Zap, TestTubes, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeIn } from "./fade-in";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { useToast } from "@/hooks/use-toast";
+import type { FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export function LandingPage() {
+  const { toast } = useToast();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "¡Mensaje enviado!",
+      description: "Pronto nos comunicaremos contigo.",
+    });
+    e.currentTarget.reset();
+  };
+
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between z-10">
         <Link href="#" className="flex items-center gap-2 font-headline text-2xl font-bold" prefetch={false}>
-          <Sparkles className="h-8 w-8 text-accent" />
-          <span className="text-foreground">BrandBoost AI</span>
+          <img
+            src="https://expertizdigital.com/wp-content/uploads/2020/06/Expertize-Digital-logo-FINAL-White-2048x307.png"
+            alt="Expertiz Digital logo"
+            className="h-8 w-auto"
+          />
+          <span className="text-foreground">Expertiz Digital</span>
         </Link>
+        <ThemeToggle />
       </header>
 
       <main className="flex-1">
@@ -26,7 +47,7 @@ export function LandingPage() {
                     Unleash Your Brand's Potential with AI
                   </h1>
                   <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                    Tired of lackluster headlines? BrandBoost AI transforms your ideas into captivating messages that grab attention and drive results. Stop guessing and start converting.
+                    Tired of lackluster headlines? Expertiz Digital transforms your ideas into captivating messages that grab attention and drive results. Stop guessing and start converting.
                   </p>
                 </div>
                 <div className="space-y-6">
@@ -57,7 +78,7 @@ export function LandingPage() {
                     <CardDescription>Respuesta en 24 horas</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <Input id="name" placeholder="Tu Nombre" />
                       <Input id="email" type="email" placeholder="Tu Correo Electrónico" />
                       <Input id="whatsapp" placeholder="WhatsApp" />
@@ -133,7 +154,7 @@ export function LandingPage() {
               <div className="max-w-3xl mx-auto">
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Ready to Elevate Your Landing Page?</h2>
                 <p className="mt-4 text-lg md:text-xl text-muted-foreground">
-                  Join hundreds of businesses growing faster with BrandBoost AI. Get started today and see the difference.
+                  Join hundreds of businesses growing faster with Expertiz Digital. Get started today and see the difference.
                 </p>
                 <div className="mt-8">
                   <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -149,10 +170,14 @@ export function LandingPage() {
       <footer className="border-t bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-accent" />
-            <span className="font-headline text-lg font-semibold text-foreground">BrandBoost AI</span>
+            <img
+              src="https://expertizdigital.com/wp-content/uploads/2020/06/Expertize-Digital-logo-FINAL-White-2048x307.png"
+              alt="Expertiz Digital logo"
+              className="h-6 w-auto"
+            />
+            <span className="font-headline text-lg font-semibold text-foreground">Expertiz Digital</span>
           </div>
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} BrandBoost AI. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Expertiz Digital. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
               <Github className="h-5 w-5" />
