@@ -32,7 +32,6 @@ export function LandingPage() {
             alt="Expertiz Digital logo"
             className="h-8 w-auto"
           />
-          <span className="text-foreground">Expertiz Digital</span>
         </Link>
         <ThemeToggle />
       </header>
@@ -175,7 +174,6 @@ export function LandingPage() {
               alt="Expertiz Digital logo"
               className="h-6 w-auto"
             />
-            <span className="font-headline text-lg font-semibold text-foreground">Expertiz Digital</span>
           </div>
           <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Expertiz Digital. All rights reserved.</p>
           <div className="flex items-center gap-4">
